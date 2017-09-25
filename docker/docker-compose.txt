@@ -1,0 +1,80 @@
+docker-compose 需要的配置文件 docker-compose.yml， version 要选择 2 ，
+1的版本很古老了，配置中可以看到创建了 2 个 service，
+web 和 redis ，各自有依赖的镜像，其中web 开放 container 的5000端口，
+并与 host 的5000端口应对，方便通过 localhost:5000 来访问， 
+volumes 即将本地目录中的文件加载到容器的 /code 中，
+depends_on 表名 services web 是依赖另一个 service redis的，
+完整的配置如下:
+  version: '2'
+    services:
+      web:
+        image: compose/python_app
+        ports:
+         - "5000:5000"
+        volumes:
+         - .:/code
+        depends_on:
+         - redis
+      redis:
+        image: redis
+
+docker-compose up ，启动成功后如下:
+
+docker-compose ps :
+
+docker-compose ps                                                                       
+          Name                          Command               State           Ports
+---------------------------------------------------------------------------------------------
+composetestbypython_redis_1   docker-entrypoint.sh redis ...   Up      6379/tcp
+composetestbypython_web_1     /bin/sh -c python app.py         Up      0.0.0.0:5000->5000/tcp
+ok ，在浏览器中访问 http://localhost:5000 就能看到最终的样子啦。
+
+docker-compose 还有很多实用的命令，比如 logs、build、start、stop 等，可以通过 docker-compose --help来查看:
+
+Define and run multi-container applications with Docker.
+
+Usage:
+  docker-compose [-f <arg>...] [options] [COMMAND] [ARGS...]
+  docker-compose -h|--help
+
+Options:
+  -f, --file FILE             Specify an alternate compose file (default: docker-compose.yml)
+  -p, --project-name NAME     Specify an alternate project name (default: directory name)
+  --verbose                   Show more output
+  -v, --version               Print version and exit
+  -H, --host HOST             Daemon socket to connect to
+
+  --tls                       Use TLS; implied by --tlsverify
+  --tlscacert CA_PATH         Trust certs signed only by this CA
+  --tlscert CLIENT_CERT_PATH  Path to TLS certificate file
+  --tlskey TLS_KEY_PATH       Path to TLS key file
+  --tlsverify                 Use TLS and verify the remote
+  --skip-hostname-check       Don't check the daemon's hostname against the name specified
+                              in the client certificate (for example if your docker host
+                              is an IP address)
+
+Commands:
+  build              Build or rebuild services
+  bundle             Generate a Docker bundle from the Compose file
+  config             Validate and view the compose file
+  create             Create services
+  down               Stop and remove containers, networks, images, and volumes
+  events             Receive real time events from containers
+  exec               Execute a command in a running container
+  help               Get help on a command
+  kill               Kill containers
+  logs               View output from containers
+  pause              Pause services
+  port               Print the public port for a port binding
+  ps                 List containers
+  pull               Pulls service images
+  push               Push service images
+  restart            Restart services
+  rm                 Remove stopped containers
+  run                Run a one-off command
+  scale              Set number of containers for a service
+  start              Start services
+  stop               Stop services
+  unpause            Unpause services
+  up                 Create and start containers
+  version            Show the Docker-Compose version information
