@@ -16,3 +16,5 @@ docker tag yeasy/hyperledger-fabric-peer:1.0.0 hyperledger/fabric-peer \
   && docker tag yeasy/hyperledger-fabric-base:1.0.0 hyperledger/fabric-baseimage:x86_64-0.3.1 \
   && docker tag hyperledger/fabric-zookeeper:x86_64-1.0.0 hyperledger/fabric-zookeeper \
   && docker tag hyperledger/fabric-kafka:x86_64-1.0.0 hyperledger/fabric-kafka
+  
+  sudo bash scripts/download_images.sh
