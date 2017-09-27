@@ -1,0 +1,9 @@
+在https://www.golangtc.com/download中下载go1.8.3.linux-amd64.tar.gz，
+tar zxvf go1.8.3.linux-amd64.tar.gz -C /home/yl/work
+创建work子目录gopath、godev
+
+vim /etc/profile
+export PATH=$PATH:/home/yl/work/go/bin
+export GOROOT=/home/yl/work/go
+export GOPATH=/home/yl/work/gopath:/home/yl/work/godev
+source /etc/profile
