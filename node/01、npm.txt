@@ -1,0 +1,36 @@
+npm install npm -g       升级npm
+npm install <module>     本地安装模块
+npm install <module> -g  全局安装模块
+npm uninstall <module>   卸载模块
+npm list                 查看本地模块列表
+npm list -g              查看全局模块列表
+npm list <module>        查看模块版本号
+npm ls                   查看模块
+npm update <module>      更新模块
+npm search <module>      搜索模块
+npm init                 初始化模块，创建package.json
+npm help json            查看package.json文档说明
+npm install <module> --save  安装模块并添加到package.json中
+npm adduser              在npm资源库中注册用户
+npm publish              发布模块
+npm help                 查看帮助文档
+npm help <command>       查看命令帮助信息
+npm cache clear          清空NPM本地缓存
+npm unpublish <package>@<version>  撤销发布包
+
+在package.json所在目录下使用npm install . -g
+可先在本地安装当前命令行程序，可用于发布前的本地测试。
+
+Package.json 属性说明
+name - 包名。
+version - 包的版本号。
+description - 包的描述。
+homepage - 包的官网 url 。
+author - 包的作者姓名。
+contributors - 包的其他贡献者姓名。
+dependencies - 依赖包列表。如果依赖包没有安装，npm 会自动将依赖包安装在 node_module 目录下。
+repository - 包代码存放的地方的类型，可以是 git 或 svn，git 可在 Github 上。
+main - main 字段指定了程序的主入口文件，require('moduleName') 就会加载这个文件。
+       这个字段的默认值是模块根目录下面的 index.js。
+keywords - 关键字
+
