@@ -1,0 +1,7 @@
+1，npm install express -g                安装express
+2，npm install express-generator -g      安装express-generator
+3，express -h
+4，express myapp                         用Express创建命名为myapp的应用
+5，cd myapp  npm install                 安装所有依赖包
+6，npm start或者node ./bin/www           启动应用
+7，http://localhost/3000                 访问应用
