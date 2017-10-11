@@ -1,11 +1,11 @@
 非阻塞式IO、事件驱动IO
 
-
 events.EventEmitter的核心是事件触发与事件监听器功能的封装。
 
-
 EventEmitter: 
+
 属性：
+
 1	addListener(event, listener)
 为指定事件添加一个监听器到监听器数组的尾部。
 
@@ -45,17 +45,30 @@ setMaxListeners 函数用于提高监听器的默认限制的数量。
 8	emit(event, [arg1], [arg2], [...])
 按参数的顺序执行每个监听器，如果事件有注册监听返回 true，否则返回 false。
 
+
 类方法：
 1	listenerCount(emitter, event)
 返回指定事件的监听器数量。
+
 
 事件：
 1	newListener
 event - 字符串，事件名称
 listener - 处理事件函数
 该事件在添加新监听器时被触发。
+
 2	removeListener
 event - 字符串，事件名称
 listener - 处理事件函数
 从指定监听器数组中删除一个监听器。
 需要注意的是，此操作将会改变处于被删监听器之后的那些监听器的索引。
+
+EventEmitter定义了一个特殊的事件error，它包含了错误的语义，遇到异常时会触发
+error事件。当error被触发时，EventEmitter如果没有响应的监听器，node.js会把它
+当做异常，退出程序并输出错误信息。
+我们一般要为会触发error事件的对象设置监听器，避免遇到错误后整个程序崩溃。
+
+大多数时候我们不会直接使用EventEmitter，而是在对象中继承它。
+包括fs、net、http在内的，只要是支持事件响应的核心模块都是EventEmitter的子类。
+
+JavaScript的对象机制是基于原型的，支持部分多重继承，承 EventEmitter 不会打乱对象原有的继承关系。
