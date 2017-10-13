@@ -5,3 +5,7 @@
 5，cd myapp  npm install                 安装所有依赖包
 6，npm start或者node ./bin/www           启动应用
 7，http://localhost/3000                 访问应用
+
+express是目前最流行的基于Node.js的Web开发框架。
+
+package.json定义了项目的名称、描述、版本、依赖等。
