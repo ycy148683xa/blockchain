@@ -1,14 +1,17 @@
-Stream是一个抽象接口, 典型的Stream对象有：
-对服务器发起请求的request对象，stdout(标准输出)。
+var Hello = require('./hello2');
+hello = new Hello();
+hello.setName('BYVoid');
+hello.sayHello();
 
-Stream有四种流类型：
-Readable  可读操作
-Wirtable  可写操作
-Duplex    可读可写操作
-Transform 操作被写入数据，然后读出结果。
+//var http = require("http");
+//http.createServer(...);
+//node.js的require方法中的文件查找策略如下：
+//node.js存在4类模块(原生模块和3种文件模块)
 
-所有的Stream对象都是EventEmitter的实例。常用的事件有：
-data    当有数据可读时触发。
-end     没有更多的数据可读时触发。
-error   在接收和写入过程中发生错误时触发。
-finish  所有数据已被写入到底层系统时触发。
+//从文件模块缓存中加载，优先级最高
+//从原生模块加载，优先级次之。  
+//从文件系统中加载文件。
+//http、fs、path等，原生模块
+//./mod ../mod 相对路径的文件模块
+// /pathtomodule/mode  绝对路径的文件模块。
+// mod 非原生模块的文件模块
